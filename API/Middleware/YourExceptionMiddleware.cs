@@ -41,7 +41,7 @@ namespace API.Middleware
         var exceptionLog = new ExceptionLog
         {
             QueryParameters = context.Request.QueryString.ToString(),
-            BodyParameters = "", // 
+            BodyParameters = "",  
             StackTrace = ex.StackTrace,
             ExceptionType = ex.GetType().Name,
             Message = ex.Message
@@ -55,7 +55,7 @@ namespace API.Middleware
         var exceptionLog = new ExceptionLog
         {
             QueryParameters = context.Request.QueryString.ToString(),
-            BodyParameters = "", // 
+            BodyParameters = "", 
             StackTrace = ex.StackTrace,
             ExceptionType = ex.GetType().Name
         };
