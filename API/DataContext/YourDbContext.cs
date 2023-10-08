@@ -18,10 +18,7 @@ namespace API.DataContext
     public DbSet<TreeNode> TreeNodes { get; set; }
     public DbSet<ExceptionLog> ExceptionLogs { get; set; }
 
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        // Dodaj dowolne konfiguracje modeli, jeśli są potrzebne
-    }
+    
 }
 
 }
