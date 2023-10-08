@@ -47,7 +47,7 @@ namespace API.Middleware
             Message = ex.Message
         };
 
-        // Save exceptionLog to the database or log it as needed
+       
     }
 
     private void LogException(HttpContext context, Exception ex)
@@ -55,12 +55,12 @@ namespace API.Middleware
         var exceptionLog = new ExceptionLog
         {
             QueryParameters = context.Request.QueryString.ToString(),
-            BodyParameters = "", // You can extract this from the request body if needed
+            BodyParameters = "", // 
             StackTrace = ex.StackTrace,
             ExceptionType = ex.GetType().Name
         };
 
-        // Save exceptionLog to the database or log it as needed
+        
     }
 
     private async Task HandleExceptionAsync(HttpContext context, Exception ex)
