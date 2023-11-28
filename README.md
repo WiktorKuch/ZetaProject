@@ -1,3 +1,29 @@
+Utwórz aplikację ASP.NET Core 6/7. Nie musisz tworzyć interfejsu użytkownika!
+
+Twoja aplikacja musi korzystać z kodu jednej z baz danych: MsSQL, MySQL, PostgreSQL (preferowane). Najpierw musisz użyć migracji kodu.
+
+Model bazy danych musi być zaprojektowany do przechowywania następujących informacji:
+
+Węzły drzew niezależnych. Każdy węzeł musi należeć do jednego drzewa. Wszystkie węzły podrzędne muszą należeć do tego samego drzewa, co ich węzeł nadrzędny. Każdy węzeł ma jedno pole obowiązkowe. To jest imię. Wszystko inne jest opcjonalne. Jeśli potrzebujesz czegoś do zaprojektowania niezależnych drzew, możesz to dodać, jak chcesz.
+Dziennik wszystkich wyjątków podczas przetwarzania żądań REST API. Każdy rekord dziennika musi zawierać informacje o: unikalnym identyfikatorze zdarzenia, znaczniku czasu wystąpienia zdarzenia, wszystkich parametrach zapytania i treści oraz śladzie stosu wyjątku. Twoja aplikacja powinna udostępniać Rest API podobne (najlepiej takie same) do istniejącego (sprawdź swagger).
+Twoja aplikacja powinna mieć własną klasę wyjątków „SecureException”. Jeżeli w trakcie przetwarzania żądania został zgłoszony wyjątek SecureException lub jego potomek, wszystkie informacje o wyjątku powinny zostać zapisane w dzienniku, a Twoja aplikacja powinna zwrócić odpowiedź ze statusem HTTP = 500. Odpowiedź powinna wyglądać następująco:
+
+{"type": "nazwa wyjątku", "id": "id zdarzenia", "data": {"wiadomość": "komunikat wyjątku"}}
+
+Przykład:
+
+{"type": "Secure", "id": "638136064526554554", "data": {"message": "Najpierw musisz usunąć wszystkie węzły podrzędne"}}
+
+Pełna informacja o wszystkich pozostałych typach wyjątków powinna być przechowywana w dzienniku. Jedyna różnica polega na tym, że odpowiedź dla innych typów wyjątków powinna wyglądać następująco:
+
+{"type": "Wyjątek", "id": "id zdarzenia", "data": {"message": "Identyfikator wewnętrznego błędu serwera = identyfikator zdarzenia"}}
+
+Przykład:
+
+{"type": "Wyjątek", "id": "638136064187111634", "data": {"message": "ID wewnętrznego błędu serwera = 638136064187111634"}}
+
+
+
 # ZetaProject
 
 Create ASP.NET Core 6/7 application. You don't need creating UI!
